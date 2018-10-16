@@ -12,8 +12,8 @@ import {
   View,
   TouchableOpacity,
   Image,
-    ActionSheetIOS,
-    NavigatorIOS
+  ActionSheetIOS,
+  NavigatorIOS
 } from 'react-native';
 import MyScreen from "./MyScreen";
 
@@ -23,16 +23,16 @@ export default class Lesson02_Navigator extends Component {
 
    // 构造
      constructor(props) {
-       super(props);
        // 初始状态
+         super(props);
        this.state = {acount : 0};
      }
 
-     _onforward(){
+     onforward(){
          this.props.navigator.push({
-             component : MyScreen,
-             title: 'Scene',
-            // passProps :
+             component: MyScreen,
+             title : '我的',
+             
          })
      }
 
@@ -51,7 +51,7 @@ export default class Lesson02_Navigator extends Component {
                     //根据按钮索引执行操作
                     this.state.acount = 0
                 }else if (buttonIndex === 3){
-                    this._onforward()
+                    this.onforward()
                 }
             });
     };
@@ -63,7 +63,7 @@ export default class Lesson02_Navigator extends Component {
 
             <View style={styles.container}>
                 {/*配置导航栏*/}
-                <NavigatorIOS style = {styles.flex} initialRoute = {{ component: MyScreen, title: '过年也不好', passProps:{}, }}/>
+                <NavigatorIOS style = {styles.flex} initialRoute = {{ component: MyScreen, title: '标题', passProps:{}, }}/>
                 <TouchableOpacity style={[{width : 80 , height:60 , backgroundColor:'red'} , {marginTop: 100}]} onPress={this.onPress}>
                     <Image
                         style={styles.button}
