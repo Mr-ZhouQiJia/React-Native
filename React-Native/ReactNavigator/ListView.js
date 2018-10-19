@@ -10,19 +10,17 @@ import {
 } from 'react-native';
 
 import {
-   StackNavigator,
-   TabNavigator,
-   TabBarBottom
+    StackNavigator,
 } from 'react-navigation';
 
 import Cell from "./Cell";
 
-//定义TabNavigator:
-const Tab = TabNavigator({
-        Home:{
-
-        }
-    })
+// //定义TabNavigator:
+// const Tab = TabNavigator({
+//         Home:{
+//
+//         }
+//     })
 
     export default class ListViewCell extends Component {
 
