@@ -21,7 +21,7 @@ import TabBarItem from './TabBarItem';
 
   class HomeScreen extends Component{
 
-    static navigatorOpations = {
+    static navigationOptions = {
         headerTitle : '首页', //设置标题
         // header :{
         //   backButtonTitle : '返回' //返回按钮 标题内容
@@ -35,7 +35,8 @@ import TabBarItem from './TabBarItem';
     render() {
         const {navigate} = this.props.navigation;
         return(
-                <View>
+            <ScrollView>
+                <View style={styles.view}>
                     <Text>Hello,Navigation!</Text>
                     {/*
                 navigate('DetailScreen',{user:'123'})
@@ -45,6 +46,77 @@ import TabBarItem from './TabBarItem';
                     <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
                 </View>
 
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                <Text>Hello,Navigation!</Text>
+                <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+                <View style={styles.view}>
+                    <Text>Hello,Navigation!</Text>
+                    <Button title="点击跳转" onPress={() => navigate('DetailScreen',{user:'123'})}  />
+                </View>
+
+            </ScrollView>
 
         )
     }
@@ -56,7 +128,7 @@ const MainScreenNavigator = TabNavigator({
     Home : {
         screen: HomeScreen,
         navigationOptions:({navigation}) => ({
-
+            headerTitle: '首页',
             tabBarLabel:'首页',
             tabBarIcon:({focused,tintColor}) => (
                 <TabBarItem
@@ -71,13 +143,14 @@ const MainScreenNavigator = TabNavigator({
         Mine:{
             screen:MineScreen,
             navigationOptions:({navigation}) => ({
+                headerTitle:'意见反馈',
                 tabBarLabel:'我的',
                 tabBarIcon:({focused,tintColor}) => (
                     <TabBarItem
                         tintColor={tintColor}
                         focused={focused}
-                        normalImage={require('./我的 focus.png')}
-                        selectedImage={require('./我的 focus(1).png')}
+                        normalImage={require('./我的.png')}
+                        selectedImage={require('./我的(1).png')}
                     />
                 )
             }),
@@ -85,7 +158,16 @@ const MainScreenNavigator = TabNavigator({
     },
     {
         mLayoutAnimationEnabled : false,
-        position : 'top',
+        tabBarPosition : 'bottom',
+        tabBarOptions:{
+            activeTintColor:'#06c1ae',
+            inactiveTintColor:'#979797',
+            style:{backgroundColor:'#ffffff',},
+            labelStyle: {
+                fontSize: 20, // 文字大小
+            },
+
+        }
     }
 );
 
@@ -96,11 +178,22 @@ const styles = StyleSheet.create({
        width: 22,
        resizeMode : 'contain'
    } ,
+    view : {
+        borderBottomWidth:0.2,
+    },
 });
 
 const SimpleApp = StackNavigator({
    Home:{screen : MainScreenNavigator} ,
    DetailScreen:{screen : DetailScreen},
+   Mine:{screen: MineScreen}
+},{
+    initialRouteName : 'Home',
+    navigationOptions:{
+
+        headerTitle: '首页',
+    }
 });
+
 
 export default SimpleApp;
