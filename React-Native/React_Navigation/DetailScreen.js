@@ -6,7 +6,8 @@ import {
     Button,
     FlatList,
     Alert,
-    TouchableOpacity
+    TouchableOpacity,
+    ActivityIndicator
 } from 'react-native';
 import NewsCell from './NewsCell';
 
@@ -18,7 +19,11 @@ export default class DetailScreen extends React.Component{
         this.state = {
             title : '',
             decription:'',
-            image:''
+            image:'',
+            // dataSource : new FlatList.dataSource({
+            //     rowHasChanged: ((row1,row2) => row1 !== row2)
+            // }),
+            dataArray: [],
         }
     }
 
@@ -37,19 +42,27 @@ export default class DetailScreen extends React.Component{
     //子item的渲染
     _renderItem = (item) => {
         return (
-            <TouchableOpacity activeOpacity={0.5} onPress={this._itemClick.bind(this,item,index)}>
-                <View>
+            <TouchableOpacity activeOpacity={0.5} onPress={this.click.bind(this)}>
+                <View style={styles.cell}>
                     <Text>
-                        {item.title}
+                       12345  +  {this.state.dataArray.length}
                     </Text>
                 </View>
             </TouchableOpacity>
         )
     }
-    //点击事件
-    _itemClick(item , index) {
 
+
+
+    //点击事件
+
+    click() {
+        Alert.alert('点我干嘛')
     }
+
+    // _itemClick(item , index) {
+    //
+    // }
     //列表分隔线
     _itemDivide = () => {
         return (
@@ -61,17 +74,41 @@ export default class DetailScreen extends React.Component{
         fetch('https://news-at.zhihu.com/api/4/news/before/20131119')
             .then((response) => response.json())
             .then((jsondata) => {
-                Alert.alert('12345'),
-                console.log(jsondata),
-                this.setState({
-                    title : jsondata.title,
+
+                // jsondata是解析到的数据
+                let data = jsondata.stories;
+               // console.log(jsondata.stories),
+                //    console.log(jsondata),
+
+                let dataBlob = [];
+                let i = 0;
+                //遍历数组
+                data.map(function (item) {
+                    //添加数据
+                    dataBlob.push({
+                        key: i,
+                        value: item,
+                    })
+                    i++;
                 })
+
+               // Alert.alert(dataBlob);
+                this.setState({
+                    //复制数据源
+                    dataArray: dataBlob,
+                    isLoading: false,
+                })
+                data = null;
+                dataBlob = null;
             })
             .catch((error) => {
                 console.log(123)
                 console.log(error)
             })
+            .done();
     }
+
+
 
     componentWillMount() {
         this._fetchData();
@@ -91,10 +128,12 @@ export default class DetailScreen extends React.Component{
             </View>
             <View>
                 <FlatList
-                    style={{margin: 20}}
-                    data={this.state.title}
+                    ref = 'flatList'
+                    style={{margin: 5}}
+                    data={this.state.dataArray}
                     renderItem={this._renderItem}
-                    ItemSeparatorComponent={this._itemDivide()}
+                    ItemSeparatorComponent={this._itemDivide}
+                    keyExtractor={this._keyExtractor}
                 />
             </View>
 
@@ -111,4 +150,9 @@ const styles = StyleSheet.create({
     container : {
         backgroundColor:'green'
     },
+
+    cell : {
+        height: 80
+    }
+
 });
