@@ -40,17 +40,17 @@ export default class DetailScreen extends React.Component{
     _keyExtractor = (item,index) => index;
 
     //子item的渲染
-    _renderItem = (item) => {
+    _renderItem = ({item}) => {
+        let imageArr = item.value.images;
         return (
             <TouchableOpacity activeOpacity={0.5} onPress={this.click.bind(this)}>
-                <View style={styles.cell}>
-                    <Text>
-                       12345  +  {this.state.dataArray.length}
-                    </Text>
-                </View>
+                <NewsCell
+                    title = {item.value.title}
+                    images = {imageArr[0]}
+                />
             </TouchableOpacity>
         )
-    }
+    };
 
 
 
@@ -68,7 +68,7 @@ export default class DetailScreen extends React.Component{
         return (
             <View style={{height: 1, backgroundColor: 'dimgray'}}></View>
         )
-    }
+    };
 
     _fetchData = () => {
         fetch('https://news-at.zhihu.com/api/4/news/before/20131119')
