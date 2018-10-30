@@ -47,6 +47,7 @@ export default class DetailScreen extends React.Component{
                 <NewsCell
                     title = {item.value.title}
                     images = {imageArr[0]}
+                    id = {item.value.id}
                 />
             </TouchableOpacity>
         )
@@ -71,7 +72,7 @@ export default class DetailScreen extends React.Component{
     };
 
     _fetchData = () => {
-        fetch('https://news-at.zhihu.com/api/4/news/before/20131119')
+        fetch('https://news-at.zhihu.com/api/4/news/before/20181026')
             .then((response) => response.json())
             .then((jsondata) => {
 
@@ -152,7 +153,7 @@ const styles = StyleSheet.create({
     },
 
     cell : {
-        height: 80
+        height: 180
     }
 
 });
