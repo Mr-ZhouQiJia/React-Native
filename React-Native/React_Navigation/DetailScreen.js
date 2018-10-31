@@ -132,7 +132,7 @@ export default class DetailScreen extends React.Component{
                     ref = 'flatList'
                     style={{margin: 5}}
                     data={this.state.dataArray}
-                    renderItem={this._renderItem}
+                    renderItem={this._renderItem.bind(this)}
                     ItemSeparatorComponent={this._itemDivide}
                     keyExtractor={this._keyExtractor}
                 />

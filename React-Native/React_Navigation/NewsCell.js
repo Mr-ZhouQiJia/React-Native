@@ -26,11 +26,11 @@ export default class NewsCell extends Component {
                        </View>
                        <View style={[{margin: 1},{flexDirection:'column'}]}>
                            <View>
-                                <Text numberOfLines= {5} style={[styles.text,{flexWrap: 'wrap'} , {backgroundColor:'red' , fontSize: 17}]}>
+                                <Text numberOfLines= {5} style={[styles.topText,{flexWrap: 'wrap'} , {backgroundColor:'red' , fontSize: 17}]}>
                                     {this.props.title}
                                 </Text>
                            </View>
-                           <View style={[styles.text,{marginBottom : 1 , height : 50}]}>
+                           <View style={[styles.text,{marginBottom : 1 }]}>
                                 <Text style={[ {color:'blue', fontSize : 17 , backgroundColor: 'gray'}  ]}>
                                     {this.props.id}
                                 </Text>
@@ -56,13 +56,20 @@ const styles = StyleSheet.create({
      // height: 160,
       width: this.width - 160,
     },
+    topText:{
+      height: 50,
+      margin: 2,
+
+
+    },
     text : {
        flex: 1,
        margin: 2,
        height: 50,
         width: width - 120,
        marginRight: 5,
-        textAlign: 'center'
+       textAlign: 'center',
+       justifyContent: 'center'
 
     },
     imageView : {
