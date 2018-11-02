@@ -10,7 +10,7 @@ import {
     ActivityIndicator
 } from 'react-native';
 import NewsCell from './NewsCell';
-
+import MineScreen from './MineScreen'
 
 export default class DetailScreen extends React.Component{
 
@@ -18,7 +18,6 @@ export default class DetailScreen extends React.Component{
         super(props);
         this.state = {
             title : '',
-            decription:'',
             image:'',
             // dataSource : new FlatList.dataSource({
             //     rowHasChanged: ((row1,row2) => row1 !== row2)
@@ -40,10 +39,12 @@ export default class DetailScreen extends React.Component{
     _keyExtractor = (item,index) => index;
 
     //子item的渲染
-    _renderItem = ({item}) => {
+    _renderItem = ({item,index}) => {
         let imageArr = item.value.images;
+        const {navigate} = this.props.navigation
         return (
-            <TouchableOpacity activeOpacity={0.5} onPress={this.click.bind(this)}>
+
+            <TouchableOpacity activeOpacity={0.5} onPress={() => {navigate('MineScreen')}}>
                 <NewsCell
                     title = {item.value.title}
                     images = {imageArr[0]}
@@ -57,14 +58,19 @@ export default class DetailScreen extends React.Component{
 
     //点击事件
 
-    click() {
-        Alert.alert('点我干嘛')
+    _click(index,item) {
+        console.log(index,'++++',item);
+      //  Alert.alert('点我干嘛' + index  + '标题:' + item.title);
+       const {navigate} = this.props.navigation;
+        navigate('MineScreen',{'id':item.value });
     }
 
     // _itemClick(item , index) {
     //
     // }
     //列表分隔线
+
+
     _itemDivide = () => {
         return (
             <View style={{height: 1, backgroundColor: 'dimgray'}}></View>
@@ -119,6 +125,7 @@ export default class DetailScreen extends React.Component{
     render(){
         //获取上级页面传来的参数
         const {params} = this.props.navigation.state;
+
         return(
             <View>
             <View style={styles.container}>
@@ -135,6 +142,7 @@ export default class DetailScreen extends React.Component{
                     renderItem={this._renderItem.bind(this)}
                     ItemSeparatorComponent={this._itemDivide}
                     keyExtractor={this._keyExtractor}
+                    showsVerticalScrollIndicator={false}
                 />
             </View>
 

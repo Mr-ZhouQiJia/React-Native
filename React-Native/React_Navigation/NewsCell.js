@@ -19,7 +19,7 @@ export default class NewsCell extends Component {
         console.log(image);
         return(
             <View >
-               <TouchableHighlight onPress={this.props.onSelect}>
+               {/*<TouchableHighlight onPress={this.props.onSelect}>*/}
                    <View style={styles.row}>
                        <View style={styles.imageView}>
                            <Image style={[{margin:0},styles.imageView]} source={{uri:this.props.images}}/>
@@ -37,7 +37,7 @@ export default class NewsCell extends Component {
                            </View>
                        </View>
                    </View>
-               </TouchableHighlight>
+               {/*</TouchableHighlight>*/}
             </View>
         )
     }
