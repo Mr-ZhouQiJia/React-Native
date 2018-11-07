@@ -1,0 +1,12 @@
+{
+  "presets": ["react-native"],
+  "plugins": ["transform-decorators-legacy"],
+  "env": {
+    "production": {
+      "plugins": [
+        "ignite-ignore-reactotron",
+        "transform-remove-console"
+      ]
+    }
+  }
+}

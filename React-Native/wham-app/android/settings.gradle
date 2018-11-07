@@ -1,0 +1,33 @@
+rootProject.name = 'whamApp'
+include ':react-native-sentry'
+project(':react-native-sentry').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sentry/android')
+include ':react-native-image-picker'
+project(':react-native-image-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-image-picker/android')
+include ':react-native-orientation'
+project(':react-native-orientation').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-orientation/android')
+include ':react-native-linear-gradient'
+project(':react-native-linear-gradient').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-linear-gradient/android')
+include ':react-native-fetch-blob'
+project(':react-native-fetch-blob').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fetch-blob/android')
+include ':react-native-fast-image'
+project(':react-native-fast-image').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fast-image/android')
+include ':react-native-device-info'
+project(':react-native-device-info').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-info/android')
+include ':react-native-contacts'
+project(':react-native-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-contacts/android')
+include ':react-native-config'
+project(':react-native-config').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-config/android')
+include ':react-native-code-push'
+project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-code-push/android/app')
+include ':aloestec-rn-splash-screen'
+project(':aloestec-rn-splash-screen').projectDir = new File(rootProject.projectDir, '../node_modules/aloestec-rn-splash-screen/android')
+include ':aloestec-rn-oss'
+project(':aloestec-rn-oss').projectDir = new File(rootProject.projectDir, '../node_modules/aloestec-rn-oss/android')
+include ':aloestec-rn-contacts'
+project(':aloestec-rn-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/aloestec-rn-contacts/android')
+include ':aloestec-rn-camera'
+project(':aloestec-rn-camera').projectDir = new File(rootProject.projectDir, '../node_modules/aloestec-rn-camera/android')
+include ':react-native-vector-icons'
+project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
+
+include ':app'
