@@ -1,84 +1,68 @@
 import React , {Component} from 'react';
 import {
-    StyleSheet,
-    View,
     Text,
-    ScrollView,
+    View,
     Image
 } from 'react-native';
 import {
-    StackNavigator,
-    TabNavigator,
+    createBottomTabNavigator,
+    createStackNavigator
+} from 'react-navigation';
+import MineStack from './MineView'
+import DetailScreen from "./DetailVC";
 
-}from 'react-navigation';
-import DetailScreen from './DetailVC'
-
-
-class HomeListScreen extends Component{
-
-    static navigationOptions = {
-        headerTitle : '首页'
-    }
+//标题图片
+class TitleImage extends Component{
     render(){
-
         return(
-            <ScrollView>
-            <View style={styles.container}>
-                <Text style={{marginTop: 100 , backgroundColor: 'red'}}>
-                    Component
-                </Text>
-            </View>
-            </ScrollView>
+            <Image source={require('./首页.png')} style={{width:30 , height:30}}/>
         )
     }
 
 }
+class HomeScreen extends React.Component {
 
+    static navigationOptions = {
+        headerTitle : <TitleImage/>
 
+    };
 
-const MyTabNavigator = TabNavigator({
-    Home : {
-        screen : HomeListScreen,
-        navigationOptions : ({navigation}) => ({
-            headerTitle: '首页',
-            tabarLabel : '首页',
-            tabBarIcon : ({tintColor}) => (
-                <Image source={require('./首页.png')} style={{width:30, height:30}}/>
-            )
-        })
-    },
-    Mine : {
-        screen : DetailScreen,
-        navigationOptions :  ({navigation}) => ({
-            tabarLabel: '我的',
-            tabBarIcon : ({tintColor}) => (
-                <Image source={require('./我的.png')} style={{width:30 , height:30}}/>
-            )
-        })
+    render() {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text>Home!</Text>
+            </View>
+        );
     }
+}
 
+class SettingsScreen extends React.Component {
+    static navigationOptions = {
+        headerTitle : <TitleImage/>
+
+    };
+    render() {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text>Settings!</Text>
+            </View>
+        );
+    }
+}
+
+const stack = createStackNavigator({
+    Home : {
+        screen : HomeScreen
+    },
+    Detail: {
+        screen : DetailScreen
+    }
 },{
 
 });
 
-const MyStackNavigator = StackNavigator({
-    Main : {screen : MyTabNavigator},
-    Detail : {screen : DetailScreen}
-},{
-    initialRouteName : 'Main',
-    headerTintColor : 'red',
-    gesturesEnabled : true
+export default createBottomTabNavigator({
+    Home: { screen: stack },
+    Settings: { screen: SettingsScreen },
+    Mine : {screen : MineStack}
 });
-
-const styles = StyleSheet.create({
-   container: {
-        //flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-   } ,
-   view :{
-
-   } ,
-});
-
-export default MyStackNavigator

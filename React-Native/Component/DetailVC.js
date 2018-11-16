@@ -7,6 +7,10 @@ import {
 
 export default class DetailScreen extends Component{
 
+    static navigationOptions = {
+        headerTitle : '我的'
+    }
+
     render(){
         return(
             <View>

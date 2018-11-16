@@ -138,7 +138,7 @@ const MainScreenNavigator = TabNavigator({
                     selectedImage={require('./首页(1).png')}
                 />
             )
-        })19930817
+        })
 
     },
         Mine:{
